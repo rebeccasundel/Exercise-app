@@ -14,6 +14,12 @@ const Navbar = (props) => {
       <div className="nav__authLinks">
         {props.user ? (
           <>
+           <Link to={PATHS.ABOUTPAGE} className="authLink">
+              Exercises
+            </Link>
+            <Link to={PATHS.PROFILEPAGE} className="authLink">
+              Profile
+            </Link>
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
             </Link>
@@ -23,8 +29,14 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
+          <Link to={PATHS.ABOUTPAGE} className="authLink">
+              About
+            </Link>
             <Link to={PATHS.SIGNUPPAGE} className="authLink">
               Signup
+            </Link>
+            <Link to={PATHS.CONTACTPAGE} className="authLink">
+              Contact
             </Link>
             <Link to={PATHS.LOGINPAGE} className="authLink">
               Log In

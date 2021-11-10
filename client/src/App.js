@@ -2,8 +2,10 @@ import React from "react";
 import { Switch } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
 import Navbar from "./components/Navbar/Navbar";
+import AboutPage from "./pages/About";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
+import Profile from "./pages/Profile";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
@@ -87,10 +89,34 @@ class App extends React.Component {
           <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
           <NormalRoute
             exact
+            path={PATHS.ABOUTPAGE}
+            authenticate={this.authenticate}
+            component={AboutPage}
+          />
+           <NormalRoute
+            exact
+            path={PATHS.EXERCISESPAGE}
+            authenticate={this.authenticate}
+            component={PATHS.EXERCISESPAGE}
+          />
+          <NormalRoute
+            exact
             path={PATHS.SIGNUPPAGE}
             authenticate={this.authenticate}
             component={Signup}
           />
+           <NormalRoute
+            exact
+            path={PATHS.CONTACTPAGE}
+            authenticate={this.authenticate}
+            component={PATHS.CONTACTPAGE}
+          />
+           {/* <NormalRoute
+            exact
+            path={PATHS.PROFILEPAGE}
+            authenticate={this.authenticate}
+            component={PATHS.PROFILEPAGE}
+          /> */}
           <NormalRoute
             exact
             path={PATHS.LOGINPAGE}
@@ -101,6 +127,12 @@ class App extends React.Component {
             exact
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.PROFILEPAGE}
+            component={Profile}
             user={this.state.user}
           />
         </Switch>
