@@ -1,19 +1,23 @@
 import React, { Component } from "react";
-import NewExercise from "../components/NewExercise/NewExercise";
 import axios from "axios";
 import ExerciseList from "../components/ExerciseList/ExerciseList";
-export default class ExercisesList extends Component {
+import WorkoutSessionsList from "../components/WorkoutSessionsList/WorkoutSessionsList";
+
+export default class WorkoutSessions extends Component {
   constructor(props) {
     console.log(props);
     super(props);
     this.state = {
+      workoutSessions: null,
       exercises: null,
+      editing: false
     };
     this.onHandleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.getExercises();
+    this.getWorkoutSessions();
   }
 
   getExercises() {
@@ -21,6 +25,14 @@ export default class ExercisesList extends Component {
       .get(`${process.env.REACT_APP_SERVER_URL}/exercises`)
       .then((result) => {
         this.setState({ exercises: result.data });
+      });
+  }
+
+  getWorkoutSessions() {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/workout-sessions/${this.props.user._id}`)
+      .then((result) => {
+        this.setState({ workoutSessions: result.data });
       });
   }
 
@@ -43,15 +55,17 @@ export default class ExercisesList extends Component {
       .catch(err => console.log("error", err));
   }
 
+  handleCreateNew() {
+    console.log('create new')
+    this.setState({editing: true});
+  }
+
   render() {
     return (
       <div>
-        <NewExercise
-          userId={this.props.user._id}
-          onSave={(formData) => this.handleSave(formData)}
-        />
+        <WorkoutSessionsList onCreateNew={() => this.handleCreateNew()} />
 
-        {this.state.exercises?.length ? (
+        {this.state.exercises?.length && this.state.editing ? (
           <ExerciseList
             exercises={this.state.exercises}
             onDelete={id => this.handleDelete(id)}

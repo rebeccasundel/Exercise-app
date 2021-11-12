@@ -5,6 +5,7 @@ function HomePage() {
   return (
     <div className="App">
       <Weather />
+      
     </div>
   );
 }

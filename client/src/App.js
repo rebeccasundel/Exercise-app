@@ -8,8 +8,10 @@ import LogIn from "./pages/LogIn";
 import Profile from "./pages/Profile";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
+import WorkoutSessions from "./pages/WorkoutSessions";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
+import Exercises from './pages/Exercises';
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 import * as USER_HELPERS from "./utils/userToken";
@@ -93,12 +95,12 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={AboutPage}
           />
-           <NormalRoute
+           {/* <NormalRoute
             exact
             path={PATHS.EXERCISESPAGE}
             authenticate={this.authenticate}
             component={PATHS.EXERCISESPAGE}
-          />
+          /> */}
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -133,6 +135,18 @@ class App extends React.Component {
             exact
             path={PATHS.PROFILEPAGE}
             component={Profile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.EXERCISESPAGE}
+            component={Exercises}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.WORKOUTSESSIONSPAGE}
+            component={WorkoutSessions}
             user={this.state.user}
           />
         </Switch>

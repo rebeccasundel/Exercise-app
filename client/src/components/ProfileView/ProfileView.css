@@ -1,0 +1,15 @@
+.label {
+  font-weight: bold;;
+}
+
+.item {
+  margin-left: 8px;
+}
+
+.break {
+  margin-bottom: 16px;
+}
+
+img {
+  width: 300px;
+}

@@ -1,6 +1,7 @@
 export const HOMEPAGE = "/";
 export const ABOUTPAGE = "/pages/About";
 export const EXERCISESPAGE = "/pages/Exercises";
+export const WORKOUTSESSIONSPAGE = "/pages/WorkoutSessions";
 export const SIGNUPPAGE = "/auth/signup";
 export const CONTACTPAGE = "/pages/Contact";
 export const PROFILEPAGE = "/pages/Profile";

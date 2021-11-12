@@ -1,14 +1,15 @@
 const router = require('express').Router();
 let WorkoutSession = require('../models/workout-session.model');
 
-router.route('/').get((req, res) => {
-    WorkoutSession.find()
+router.route('/:userId').get((req, res) => {
+    console.log(req.params)
+    WorkoutSession.find({userId: req.params.userId})
       .then(workoutSession => res.json(workoutSession))
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
   router.route('/add').post((req, res) => {
-    const username = req.body.username;
+    const userId = req.body.userId;
     const user = req.body.user;
     const description = req.body.description;
     const duration = Number(req.body.duration);
@@ -16,7 +17,7 @@ router.route('/').get((req, res) => {
     const exercises =req.body.exercises;
   
     const newWorkoutSession = new WorkoutSession({
-      username,
+      userId,
       user,
       description,
       duration,
