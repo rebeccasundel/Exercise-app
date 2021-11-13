@@ -8,6 +8,7 @@ import LogIn from "./pages/LogIn";
 import Profile from "./pages/Profile";
 import ProtectedPage from "./pages/ProtectedPage";
 import Signup from "./pages/Signup";
+import ContactPage from "./pages/Contact";
 import WorkoutSessions from "./pages/WorkoutSessions";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
@@ -111,7 +112,7 @@ class App extends React.Component {
             exact
             path={PATHS.CONTACTPAGE}
             authenticate={this.authenticate}
-            component={PATHS.CONTACTPAGE}
+            component={ContactPage}
           />
            {/* <NormalRoute
             exact

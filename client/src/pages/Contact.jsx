@@ -2,51 +2,29 @@ import React from "react";
 
 export default function Contact() {
     return (
-        <div className="section">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="section-title">
-                            <h2 className="title">Contact Us</h2>
-                            <p>Let us know what you think! In order to provide better service,
-                                 please do not hesitate to give us your feedback. Thank you.</p><hr/>
-                            <form id="contact-form" onSubmit={this.submitEmail.bind(this)} 
-                                method="POST">
-                            <div className="form-group">
-                            <div className="row">
-                            <div className="col-md-6">
-                                <input placeholder = "Name"  id="name" type="text" 
-                                   className="form-control" required value={this.state.name} 
-                                   onChange={this.onNameChange.bind(this)}/>
-                            </div>
-                            <div className="col-md-6">
-                                <input placeholder = "Email"  id="email" type="email"
-                                  className="form-control" aria-describedby="emailHelp"
-                                  required value={this.state.email} onChange=
-                                  {this.onEmailChange.bind(this)}/>
-                            </div>
-                            </div>
-                            </div>
-                            <div className="form-group">
-                                <input placeholder = "Subject"  id="subject" type="text"
-                                  className="form-control" required value={this.state.subject}
-                                  onChange={this.onSubjectChange.bind(this)}/>
-                            </div>
-                            <div className="form-group">
-                                <textarea placeholder = "Message"  id="message" 
-                                   className="form-control" rows="1" 
-                                   required value={this.state.message}
-                                   onChange= {this.onMsgChange.bind(this)}/>
-                            </div>
-                            <button type="submit" className="primary-btn submit">Submit</button>
-                            </form>
-                        </div>
-                    </div>
+        <div class="row">
 
-                </div>
+  <div>
+    <h1>Contact </h1>
+    <br></br>
+    <p>Contact me for more information on this app or for questions and comments.</p>
+    <br></br>
+  </div>
+  <div class="column">
+      <img src="https://gisgeography.com/wp-content/uploads/2020/06/Miami-Map-Feature.jpg" alt="miami"></img>
+    </div>
+    <div class="column">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.."></input>
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.."></input>
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+        <input type="submit" value="Submit"></input>
+</div>
+</div>
 
-            </div>
-        </div>
     );
 }
 
+// Needs to be able to submit to backend and submit button work
