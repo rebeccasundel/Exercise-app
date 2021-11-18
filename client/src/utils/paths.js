@@ -7,3 +7,4 @@ export const CONTACTPAGE = "/pages/Contact";
 export const PROFILEPAGE = "/pages/Profile";
 export const LOGINPAGE = "/auth/login";
 export const PROTECTEDPAGE = "/protected";
+export const WORKOUTSESSIONSEDITPAGE = "/pages/WorkoutSessions/:id";

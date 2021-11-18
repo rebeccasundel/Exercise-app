@@ -1,8 +1,18 @@
 .card{
 
     max-width: 400px;
-    padding: 16px 0;
+    padding: 16px;
+    cursor: pointer;
     border-radius: 8px;
     margin-left: 24px;
     box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 6px 1px rgba(0, 0, 0, 0.06);;
+}
+
+.card-container{
+    display: flex;
+   overflow-x: auto;
+}
+
+.card:hover{
+    background-color: rgb(224, 221, 221);
 }

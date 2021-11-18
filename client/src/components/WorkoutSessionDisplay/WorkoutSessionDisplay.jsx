@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { Component } from "react";
 import "./WorkoutSessionDisplay.css"
+import { withRouter } from "react-router-dom";
 
-export default class WorkoutSessionsDisplay extends Component {
+class WorkoutSessionsDisplay extends Component {
   constructor(props) {
     console.log(props);
     super(props);
@@ -24,12 +25,16 @@ export default class WorkoutSessionsDisplay extends Component {
       });
   }
 
+handleClick(index) {
+    this.props.history.push("/pages/WorkoutSessions/"+this.state.workoutSessions[index]._id);
+console.log(this.state.workoutSessions[index])
+}
 
   render() {
     return (
-      <div>
+      <div className="card-container">
         {this.state.workoutSessions.map((workout, index)=>{
-            return <div className="card" key="index">
+            return <div className="card" key={workout._id} onClick={()=>this.handleClick(index)}>
             <span className="label">Workout Session Name</span>
             <span className="item">{workout.name}</span>
              <br></br>
@@ -47,7 +52,7 @@ export default class WorkoutSessionsDisplay extends Component {
              <br></br>
              <br></br>
              {workout.exercises.map((exercise, i)=>{
-                 return <div key="exercise._id">
+                 return <div key={exercise._id}>
                      {exercise.name}
                  </div>
              })}
@@ -58,3 +63,5 @@ export default class WorkoutSessionsDisplay extends Component {
     );
   }
 }
+
+export default withRouter(WorkoutSessionsDisplay)

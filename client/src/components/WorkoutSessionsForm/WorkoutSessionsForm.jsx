@@ -5,18 +5,36 @@ import axios from "axios";
 class WorkoutSessionsForm extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
       userId: props.userId || "",
-      workoutSessionName: props.exercise?.workoutSessionName || "",
-      description: props.exercise?.description || "",
-      duration: props.exercise?.duration || "",
-      date: props.exercise?.date || "",
+      workoutSessionName: props.workoutSession?.name || "",
+      description: props.workoutSession?.description || "",
+      duration: props.workoutSession?.duration || "",
+      date: props.workoutSession?.date || "",
     };
+    
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
 
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if(prevProps.workoutSessionName!==this.props.workoutSessionName
+  //   &&prevProps.description!==this.props.description
+  //   &&prevProps.duration!==this.props.duration
+  //   &&prevProps.date!==this.props.date
+  //   )
+  //   console.log(this.props)
+  //   this.setState({
+  //     workoutSessionName: this.props.workoutSession?.name || "",
+  //     description: this.props.workoutSession?.description || "",
+  //     duration: this.props.workoutSession?.duration || "",
+  //     date: this.props.workoutSession?.date || "",
+  //   })
+    
+  // }
 
   handleInputChange(event) {
     const target = event.target;
@@ -51,7 +69,7 @@ class WorkoutSessionsForm extends Component {
         <label> Workout Session Name</label>
         <input
           type="text"
-          value={this.state.firstname}
+          value={this.state.workoutSessionName}
           onChange={this.handleInputChange}
           name="workoutSessionName"
         />
@@ -67,7 +85,7 @@ class WorkoutSessionsForm extends Component {
         <label> Duration</label>
         <input
           type="text"
-          value={this.state.lastname}
+          value={this.state.duration}
           onChange={this.handleInputChange}
           name="duration"
         />
@@ -75,7 +93,7 @@ class WorkoutSessionsForm extends Component {
         <label> Date </label>
         <input
           type="date"
-          value={this.state.height}
+          value={this.state.date}
           onChange={this.handleInputChange}
           name="date"
         />

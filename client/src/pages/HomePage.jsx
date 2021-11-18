@@ -1,18 +1,23 @@
 import "../App.css";
 import Weather from "../components/Weather/Weather";
 import WorkoutSessionsDisplay from "../components/WorkoutSessionDisplay/WorkoutSessionDisplay";
+import { useHistory } from 'react-router-dom';
 
 function HomePage(props) {
+  const history=useHistory()
   return (
     <div className="App">
+      <h1>Choose your own uinque weather based exercise workout plan</h1>
+      <br></br>
+      <br></br>
       <Weather />
       <br></br>
       <br></br>
       <br></br>
-      <h1>Choose your own uinque weather based exercise workout plan</h1>
+      
       <br></br>
       <br></br>
-      <button className="button__create" type="Create a new workout today!">
+      <button onClick={() => history.push('/pages/WorkoutSessions')} className="button__create" type="Create a new workout today!">
             Create a new workout today!
           </button>
       <br></br>

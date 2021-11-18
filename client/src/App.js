@@ -16,6 +16,7 @@ import Exercises from './pages/Exercises';
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
 import * as USER_HELPERS from "./utils/userToken";
+import WorkoutSessionsEdit from "./pages/WorkoutSessionEdit";
 
 class App extends React.Component {
   state = {
@@ -148,6 +149,12 @@ class App extends React.Component {
             exact
             path={PATHS.WORKOUTSESSIONSPAGE}
             component={WorkoutSessions}
+            user={this.state.user}
+          />
+           <ProtectedRoute
+          
+            path={PATHS.WORKOUTSESSIONSEDITPAGE}
+            component={WorkoutSessionsEdit}
             user={this.state.user}
           />
         </Switch>
