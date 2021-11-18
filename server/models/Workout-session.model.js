@@ -10,7 +10,7 @@ const workoutsessionSchema = new Schema({
     exercises: [{
         name: { type: String, required: true },
         description: { type: String, required: true },
-        duration: { type: Number, required: true },
+        duration: { type: String, required: true },
         date: { type: Date, required: true },
         profilepicture: { type: String, },
       }]})

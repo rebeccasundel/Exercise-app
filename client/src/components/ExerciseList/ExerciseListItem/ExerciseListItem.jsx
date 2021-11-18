@@ -18,6 +18,10 @@ class ExerciseListItem extends Component {
     this.props.onDelete(this.state.id);
   }
 
+  handleAdd(id) {
+    this.props.onAdd(this.state.id);
+  }
+
   render() {
     return (
       <div className="exercise-item-container">
@@ -38,7 +42,10 @@ class ExerciseListItem extends Component {
           <span className="item">{this.state.date}</span>
         </div>
         <img src={this.state.profilepicture} alt="" />
-        <button onClick={() => this.handleDelete()}>Delete</button>
+        {this.props.adding ? 
+          <button onClick={() => this.handleAdd()}>Add</button> :         
+          <button onClick={() => this.handleDelete()}>Delete</button>
+        }
       </div>
     );
   }

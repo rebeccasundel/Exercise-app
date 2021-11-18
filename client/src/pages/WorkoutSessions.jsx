@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ExerciseList from "../components/ExerciseList/ExerciseList";
 import WorkoutSessionsList from "../components/WorkoutSessionsList/WorkoutSessionsList";
+import WorkoutSessionsForm from "../components/WorkoutSessionsForm/WorkoutSessionsForm";
 
 export default class WorkoutSessions extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ export default class WorkoutSessions extends Component {
     this.state = {
       workoutSessions: null,
       exercises: null,
-      editing: false
+      editing: false,
+      savedExercises: []
     };
     this.onHandleDelete = this.handleDelete.bind(this);
   }
@@ -54,23 +56,68 @@ export default class WorkoutSessions extends Component {
       })
       .catch(err => console.log("error", err));
   }
+handleAdd(id) {
+    const exercise = this.state.exercises.find(exercise => exercise._id === id)
+   
+    this.setState(prevState => ({
+        savedExercises: [...prevState.savedExercises, exercise]
+      }))
+}
+
+handleRemove(id) {
+    const exercises = this.state.savedExercises.filter(exercise => exercise._id !== id)
+    this.setState({savedExercises: exercises})
+
+}
 
   handleCreateNew() {
-    console.log('create new')
     this.setState({editing: true});
   }
+
+  handleAfterSave() {
+    this.setState({editing: false});
+    this.getWorkoutSessions()
+  }
+
 
   render() {
     return (
       <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1>Create a new workout session</h1>
+         <h2> Or</h2>
+         <h1>Use an existing session</h1>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
+         <br></br>
         <WorkoutSessionsList onCreateNew={() => this.handleCreateNew()} />
 
         {this.state.exercises?.length && this.state.editing ? (
-          <ExerciseList
+         <>
+         <WorkoutSessionsForm 
+         savedExercises={this.state.savedExercises}
+         userId={this.props.user._id}
+         onRemove={(id)=>this.handleRemove(id)}
+         onSave={()=>this.handleAfterSave()}
+         
+         />
+         
+         <ExerciseList
+            adding={true}
             exercises={this.state.exercises}
             onDelete={id => this.handleDelete(id)}
+            onAdd={id => this.handleAdd(id)}
           />
+          </>
         ) : null}
+         <br></br>
+         <br></br> 
+         <br></br>
       </div>
     );
   }

@@ -89,7 +89,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} user={this.state.user}/>
           <NormalRoute
             exact
             path={PATHS.ABOUTPAGE}

@@ -9,16 +9,17 @@ router.route('/:userId').get((req, res) => {
   });
 
   router.route('/add').post((req, res) => {
+    console.log(req.body)
     const userId = req.body.userId;
-    const user = req.body.user;
+    const name = req.body.workoutSessionName;
     const description = req.body.description;
-    const duration = Number(req.body.duration);
-    const date = Date.parse(req.body.date);
-    const exercises =req.body.exercises;
+    const duration = req.body.duration;
+    const date = req.body.date;
+    const exercises =req.body.savedExercises;
   
     const newWorkoutSession = new WorkoutSession({
       userId,
-      user,
+      name,
       description,
       duration,
       date,
@@ -27,7 +28,10 @@ router.route('/:userId').get((req, res) => {
   
     newWorkoutSession.save()
     .then(() => res.json('Workout added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => {
+      console.log(err)
+      res.status(400).json('Error: ' + err)
+    });
   });
 
 module.exports = router;

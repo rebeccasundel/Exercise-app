@@ -17,6 +17,9 @@ class ExerciseList extends Component {
   handleDelete(id) {
     this.props.onDelete(id);
   }
+  handleAdd(id) {
+    this.props.onAdd(id);
+  }
 
   render() {
     return (
@@ -27,7 +30,9 @@ class ExerciseList extends Component {
             return (
               <ExerciseListItem
                 exercise={e}
+                adding={this.props.adding}
                 onDelete={(id) => this.handleDelete(id)}
+                onAdd={(id) => this.handleAdd(id)}
                 key={index}
               />
             );

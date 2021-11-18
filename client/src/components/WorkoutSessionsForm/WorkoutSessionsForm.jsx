@@ -1,45 +1,97 @@
 import React, { Component } from "react";
 import "./WorkoutSessionsForm.css"
+import axios from "axios";
 
 class WorkoutSessionsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.exercise?._id || "",
-      name: props.exercise?.name || "",
+      userId: props.userId || "",
+      workoutSessionName: props.exercise?.workoutSessionName || "",
       description: props.exercise?.description || "",
       duration: props.exercise?.duration || "",
       date: props.exercise?.date || "",
-      profilepicture: props.exercise?.profilepicture || "",
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
+
   }
 
-  handleDelete(id) {
-    this.props.onDelete(this.state.id);
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  onSubmitForm(event) {
+    event.preventDefault();
+    const savedExercises=[...this.props.savedExercises]
+    const formData={...this.state, savedExercises}
+    axios
+    .post(`${process.env.REACT_APP_SERVER_URL}/workout-sessions/add`, formData)
+    .then((response) => {
+      this.props.onSave();
+    })
+    .catch(() => console.log('error'));
+  }
+
+  handleRemove(event,id){
+    event.preventDefault()
+    this.props.onRemove(id)
   }
 
   render() {
     return (
-      <div className="exercise-item-container">
-        <div className="exercise-item">
-          <span className="item-label">Name: </span>
-          <span className="item">{this.state.name}</span>
+        <form>
+        <label> Workout Session Name</label>
+        <input
+          type="text"
+          value={this.state.firstname}
+          onChange={this.handleInputChange}
+          name="workoutSessionName"
+        />
+        <br></br>
+        <label> Description</label>
+        <input
+          type="text"
+          value={this.state.description}
+          onChange={this.handleInputChange}
+          name="description"
+        />
+        <br></br>
+        <label> Duration</label>
+        <input
+          type="text"
+          value={this.state.lastname}
+          onChange={this.handleInputChange}
+          name="duration"
+        />
+        <br></br>
+        <label> Date </label>
+        <input
+          type="date"
+          value={this.state.height}
+          onChange={this.handleInputChange}
+          name="date"
+        />
+        <br></br>
+        <div className="exercise-form-item-container">
+        {this.props.savedExercises.map((exercise, index) => {
+            return <div key={index} className="exercise-form-item">
+                <span>{exercise.name}</span>
+                <button onClick={event=>this.handleRemove(event, exercise._id)}>Remove</button>
+            </div>
+        })}
         </div>
-        <div className="exercise-item">
-          <span className="item-label">Description: </span>
-          <span className="item">{this.state.description}</span>
-        </div>
-        <div className="exercise-item">
-          <span className="item-label">Duration: </span>
-          <span className="item">{this.state.duration}</span>
-        </div>
-        <div className="exercise-item">
-          <span className="item-label">Date: </span>
-          <span className="item">{this.state.date}</span>
-        </div>
-        <img src={this.state.profilepicture} alt="" />
-        <button onClick={() => this.handleDelete()}>Delete</button>
-      </div>
+        <br></br>
+        <button type="button" onClick={event => this.onCancel(event)}>Cancel</button>
+        <button onClick={this.onSubmitForm}>Save</button>
+      </form>
     );
   }
 }
