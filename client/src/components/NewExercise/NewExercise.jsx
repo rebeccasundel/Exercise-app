@@ -89,7 +89,9 @@ class NewExercise extends Component {
             onChange={this.handleInputChange}
             name="profilepicture"
           />
-          <button onClick={(event) => this.handleSave(event)}>Save</button>
+          <br></br>
+          <br></br>
+          <button className="button__save" onClick={(event) => this.handleSave(event)}>Save</button>
         </form>
       </div>
     );

@@ -44,6 +44,7 @@ export default class Profile extends Component {
           {this.state.editing ? "Edit " : !this.state.profile ? "New " : "My "}
           Profile
         </h1>
+
         {this.state.profile && !this.state.editing ? (
           <ProfileView
             profile={this.state.profile}
@@ -59,6 +60,9 @@ export default class Profile extends Component {
             onSave={() => this.onSave()}
           />
         ) : null}
+        <h4>Click EDIT to update your profile</h4>
+        <h4>Click SUBMIT to save your profile</h4>
+        <h4>Click CANCEL to go back to your profile</h4>
       </div>
     );
   }

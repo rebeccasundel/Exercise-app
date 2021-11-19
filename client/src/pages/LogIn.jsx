@@ -51,6 +51,8 @@ export default class Login extends Component {
             required
           />
 
+          <br></br>
+
           <label htmlFor="input-password">Password</label>
           <input
             id="input-password"
@@ -62,6 +64,8 @@ export default class Login extends Component {
             required
             minLength="8"
           />
+
+          <br></br>
 
           {this.state.error && (
             <div className="error-block">

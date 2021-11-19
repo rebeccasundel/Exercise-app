@@ -25,27 +25,36 @@ class ExerciseListItem extends Component {
   render() {
     return (
       <div className="exercise-item-container">
-        <div className="exercise-item">
-          <span className="item-label">Name: </span>
-          <span className="item">{this.state.name}</span>
+        <div>
+          <div className="exercise-item">
+            <span className="item-label">Name: </span>
+            <span className="item">{this.state.name}</span>
+          </div>
+          <div className="exercise-item">
+            <span className="item-label">Description: </span>
+            <span className="item">{this.state.description}</span>
+          </div>
+          <div className="exercise-item">
+            <span className="item-label">Duration: </span>
+            <span className="item">{this.state.duration}</span>
+          </div>
+          <div className="exercise-item">
+            <span className="item-label">Date: </span>
+            <span className="item">{this.state.date}</span>
+          </div>
         </div>
-        <div className="exercise-item">
-          <span className="item-label">Description: </span>
-          <span className="item">{this.state.description}</span>
+        <div>
+          <img
+            className="exercise-pic"
+            src={this.state.profilepicture}
+            alt="pic"
+          />
+          {this.props.adding ? (
+            <button className="button__add" onClick={() => this.handleAdd()}>+</button>
+          ) : (
+            <button className="button__delete" onClick={() => this.handleDelete()}>Delete</button>
+          )}
         </div>
-        <div className="exercise-item">
-          <span className="item-label">Duration: </span>
-          <span className="item">{this.state.duration}</span>
-        </div>
-        <div className="exercise-item">
-          <span className="item-label">Date: </span>
-          <span className="item">{this.state.date}</span>
-        </div>
-        <img src={this.state.profilepicture} alt="" />
-        {this.props.adding ? 
-          <button onClick={() => this.handleAdd()}>Add</button> :         
-          <button onClick={() => this.handleDelete()}>Delete</button>
-        }
       </div>
     );
   }

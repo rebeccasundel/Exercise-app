@@ -1,38 +1,43 @@
 import "../App.css";
 import Weather from "../components/Weather/Weather";
 import WorkoutSessionsDisplay from "../components/WorkoutSessionDisplay/WorkoutSessionDisplay";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function HomePage(props) {
-  const history=useHistory()
+  const history = useHistory();
   return (
     <div className="App">
-      <br></br>
-      <br></br>
-      <h1>Choose your own uinque weather based exercise workout plan</h1>
-      <br></br>
-      <br></br>
-      <Weather/>
-      <br></br>
-      <br></br>
-      <br></br>
-      
-      <br></br>
-      <br></br>
-      <button onClick={() => history.push('/pages/WorkoutSessions')} className="button__create" type="Create a new workout today!">
+      <div className="homepage__container">
+        <div className="homepage__box">
+          <h1>Choose your own unique weather based exercise workout plan</h1>
+          <br></br>
+          <br></br>
+          <Weather />
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <br></br>
+          <br></br>
+          <button
+            onClick={() => history.push("/pages/WorkoutSessions")}
+            className="button__create"
+            type="Create a new workout today!"
+          >
             Create a new workout today!
           </button>
+        </div>
+      </div>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h2>Previous Workout Sessions</h2>
-      <br></br>
-      <br></br>
-      <WorkoutSessionsDisplay
-      userId={props.user._id}
-      />
+
+      {props?.user?._id ? (
+        <>
+          <h2>Previous Workout Sessions</h2>
+          <br></br>
+          <br></br>
+          <WorkoutSessionsDisplay userId={props.user._id} />
+        </>
+      ) : null}
 
       {/* add carousel feature with previous workout sessions */}
       <br></br>
@@ -40,7 +45,6 @@ function HomePage(props) {
       <br></br>
       <br></br>
       <footer>Powered by Ironhack Student </footer>
-      
     </div>
   );
 }

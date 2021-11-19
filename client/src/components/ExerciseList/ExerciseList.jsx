@@ -6,12 +6,14 @@ class ExerciseList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.exercises?._id || "",
-      name: props.exercises?.name || "",
-      description: props.exercises?.description || "",
-      duration: props.exercises?.duration || "",
-      date: props.exercises?.date || "",
+      exercises: props.exercises || []
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.exercises !== this.props.exercises) {
+      this.setState({exercises: this.props.exercises})
+    }
   }
 
   handleDelete(id) {
@@ -26,7 +28,7 @@ class ExerciseList extends Component {
       <div className="exercise-main-list">
         <h2>Exercise List</h2>
         <div className="exercise-list-container">
-          {this.props.exercises.map((e, index) => {
+          {this.state.exercises.map((e, index) => {
             return (
               <ExerciseListItem
                 exercise={e}

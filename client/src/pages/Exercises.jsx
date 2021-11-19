@@ -4,12 +4,10 @@ import axios from "axios";
 import ExerciseList from "../components/ExerciseList/ExerciseList";
 export default class ExercisesList extends Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       exercises: null,
     };
-    this.onHandleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +18,7 @@ export default class ExercisesList extends Component {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/exercises`)
       .then((result) => {
+        console.log(result)
         this.setState({ exercises: result.data });
       });
   }
@@ -34,7 +33,7 @@ export default class ExercisesList extends Component {
   }
 
   handleDelete(id) {
-    console.log("delete", id);
+    console.log(id)
     axios
       .delete(`${process.env.REACT_APP_SERVER_URL}/exercises/${id}`)
       .then((result) => {

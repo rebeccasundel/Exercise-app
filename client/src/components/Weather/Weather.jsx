@@ -11,11 +11,10 @@ class Weather extends Component {
     componentDidMount() {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/weather`)
         .then(response => {
-            console.log (response)
-            console.log (response.data[0].Temperature.Imperial.Value)
-            this.setState({weatherType: response.data[0].WeatherText,
-            link: response.data[0].Link,
-            temperature: response.data[0].Temperature.Imperial.Value,
+            this.setState({
+                weatherType: response.data[0]?.WeatherText || '',
+                link: response.data[0]?.Link || '',
+                temperature: response.data[0]?.Temperature.Imperial.Value || '',
             })
         })
     }

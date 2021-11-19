@@ -2,13 +2,13 @@ import React from "react";
 
 export default function About() {
   return (
-    <div class="about-section">
+    <div className="about-section">
      <h1> About </h1>
     <div>
   <br></br>
   <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Smiling_Face_Emoji_large.png?v=1571606036" alt=''></img>
 </div>
-      <div>
+      <div className="about__text-container">
          <p> Hi, I'm Rebecca Sundel. 
           I am 22 years old. I am from Washington, D.C., but I currently reside
           in Miami, Florida.  I recently joined an Ironhack program where 
@@ -19,12 +19,6 @@ export default function About() {
           start creating their workout session.
           </p>
         </div>
-        <br></br>
-        <br></br>
-        <h3>Contact Information</h3>
-        <li>Address: Miami, Florida</li>
-        <li>Telephone: (xxx)xxx-xxxx</li>
-        <li>Email: sundelrp@gmail.com</li>
     </div>
   );
 }

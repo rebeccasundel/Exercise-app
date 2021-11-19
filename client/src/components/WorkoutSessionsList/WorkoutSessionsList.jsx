@@ -20,7 +20,7 @@ class WorkoutSessionsList extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.handleEdit()}> Create New Session </button>
+        <button className="button__create" onClick={() => this.handleEdit()}> Create New Session </button>
       </div>
     );
   }

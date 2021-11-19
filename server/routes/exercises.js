@@ -30,7 +30,6 @@ router.route("/add").post((req, res) => {
 });
 
 router.route("/:exerciseId").delete((req, res) => {
-  console.log(req.params);
   Exercise.deleteOne({ _id: req.params.exerciseId })
     .then(() => res.json("Exercise deleted!"))
     .catch((err) => res.status(400).json("Error: " + err));

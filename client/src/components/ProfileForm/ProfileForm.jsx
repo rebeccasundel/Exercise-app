@@ -98,8 +98,8 @@ class ProfileForm extends Component {
           name="profilepicture"
         />
         <br></br>
-        <button type="button" onClick={event => this.onCancel(event)}>Cancel</button>
-        <button onClick={this.onSubmitForm}>Submit</button>
+        <button className="button__cancel" type="button" onClick={event => this.onCancel(event)}>Cancel</button>
+        <button className="button__save" onClick={this.onSubmitForm}>Submit</button>
       </form>
     );
   }

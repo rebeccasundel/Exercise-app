@@ -39,7 +39,7 @@ class ProfileView extends Component {
         <img src={this.state.profilepicture} alt="" />
         <br></br>
         <br></br>
-        <button onClick={this.props.onClick}>Edit</button>
+        <button className="button__edit" onClick={this.props.onClick}>Edit</button>
       </div>
     );
   }

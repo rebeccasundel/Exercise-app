@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: rgb(241, 241, 241);
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .App-logo {
@@ -37,11 +40,53 @@
   }
 }
 
+.button__create {
+  background-color: blue;
+}
+
+.button__cancel {
+  background-color: rgb(56, 56, 56);
+  width: 100px;
+}
+
+.button__save, .button__submit {
+  background-color: rgb(21, 180, 21);
+  margin-left: 16px;
+  width: 100px;
+}
+
+.button__delete {
+  background-color: red;
+  margin-left: 16px;
+  width: 100px;
+}
+
+.button__edit {
+  background-color: blue;
+  width: 100px;
+}
+
+.button__remove {
+  background-color: red;
+  margin-left: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+
+.button__add {
+  background-color: rgb(21, 180, 21);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
 button{
   height: 48px;
   padding: 0 8px;
   color: white;
-  background-color: blue;
   border-radius: 16px;
   font-size: 16px;
   border: none;
@@ -51,7 +96,39 @@ button{
 input{
   height: 36px;
   font-size: 14px;
-  border-color: gray;
-  caret-color: blue;
+  border: 1px solid rgb(180, 180, 180);
   border-radius: 8px;
+  padding: 0 8px;
+}
+
+.about__text-container {
+  padding: 16px 140px;
+}
+
+.homepage__container {
+  padding: 100px 100px 0 100px;
+}
+
+.homepage__box {
+  border-radius: 16px;;
+  padding: 16px 16px 32px 16px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
+  background-color: white;
+}
+
+.session__container {
+  padding: 80px 100px 0 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.session__box {
+  border-radius: 16px;;
+  padding: 16px 80px 32px 80px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.3);
+  background-color: white;
+}
+
+.session-display {
+  padding-right: 24px;
 }
