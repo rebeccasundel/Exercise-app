@@ -7,10 +7,12 @@ function HomePage(props) {
   const history=useHistory()
   return (
     <div className="App">
+      <br></br>
+      <br></br>
       <h1>Choose your own uinque weather based exercise workout plan</h1>
       <br></br>
       <br></br>
-      <Weather />
+      <Weather/>
       <br></br>
       <br></br>
       <br></br>
