@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let Profile = require("../models/profile.model");
+let Profile = require("../models/Profile.model");
 
 // Profile.deleteOne({ userId: "618da6de37f0d337b8a49299" }).then((p) =>
 //   console.log(p)

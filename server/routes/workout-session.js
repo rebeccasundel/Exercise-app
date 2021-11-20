@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let WorkoutSession = require("../models/workout-session.model");
+let WorkoutSession = require("../models/Workout-session.model");
 
 router.route("/:userId").get((req, res) => {
   WorkoutSession.find({ userId: req.params.userId })
